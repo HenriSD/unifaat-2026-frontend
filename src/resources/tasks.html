@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -9,7 +10,6 @@
   <link rel="stylesheet" href="./css/app.css">
   <script type="module" src="./js/app.ts"></script>
   <script type="module" src="./js/pages/tasks.ts"></script>
-<script type="module" src="./js/teste.ts"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100 bg-light">
@@ -25,15 +25,147 @@
 
     <section id="add-task-section" class="card shadow-sm p-4 d-flex flex-column gap-2 text-center">
       <h5>Nova Tarefa</h5>
-      <input type="text" id="task-input" class="form-control" placeholder="Digite a tarefa..." />
-      <button id="add-task-btn" class="btn btn-primary" type="button">Adicionar</button>
+      <input
+        type="text"
+        id="task-input"
+        class="form-control"
+        placeholder="Digite a tarefa..."
+      />
+      <button id="add-task-btn" class="btn btn-primary" type="button">
+        Adicionar
+      </button>
     </section>
 
   </main>
 
+  <section class="container pb-4">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#assign-task-modal"
+    >
+      Nova tarefa para outro usuário
+    </button>
+  </section>
+
+  <div
+    class="modal fade"
+    id="assign-task-modal"
+    tabindex="-1"
+    aria-labelledby="assign-task-modal-title"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="assign-task-modal-title">
+            Criar tarefa para outro usuário
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Fechar"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label for="assign-task-name" class="form-label">
+              Nome da tarefa
+            </label>
+            <input
+              type="text"
+              id="assign-task-name"
+              class="form-control"
+              placeholder="Digite o nome da tarefa"
+              maxlength="255"
+            />
+          </div>
+
+          <hr>
+
+          <h6>Buscar usuário</h6>
+
+          <div class="mb-3">
+            <label for="assign-search-field" class="form-label">
+              Campo de busca
+            </label>
+            <select id="assign-search-field" class="form-select">
+              <option value="name">Nome</option>
+              <option value="email">E-mail</option>
+              <option value="job_title">Cargo</option>
+              <option value="city">Cidade</option>
+              <option value="state">UF</option>
+              <option value="bio">Bio</option>
+            </select>
+          </div>
+
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              id="assign-search-value"
+              class="form-control"
+              placeholder="Digite o que deseja buscar"
+            />
+            <button
+              type="button"
+              id="assign-search-btn"
+              class="btn btn-outline-primary"
+            >
+              Buscar
+            </button>
+          </div>
+
+          <div id="assign-search-results" aria-live="polite"></div>
+
+          <hr>
+
+          <div
+            id="assign-selected-user"
+            class="alert alert-secondary"
+            aria-live="polite"
+          >
+            Nenhum usuário selecionado.
+          </div>
+
+          <div
+            id="assign-task-message"
+            class="alert d-none"
+            role="alert"
+            aria-live="assertive"
+          ></div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            id="assign-task-cancel"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            id="assign-task-submit"
+            class="btn btn-primary"
+          >
+            Criar tarefa
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <footer class="bg-primary text-white text-center py-3 mt-auto">
     <div class="small">Frontend 2026.2</div>
   </footer>
-</body>
 
+</body>
 </html>
